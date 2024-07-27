@@ -22,10 +22,12 @@ class Departamento(models.Model):
 class Ciudad(models.Model):
     nombre = models.CharField(max_length=60)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
-    nombre = models.CharField(max_length=60)
-
+    
     def __str__(self):
-        return self.nombre
+        return self.nombre + ' - ' + self.departamento.nombre
+    
+    def get_queryset(self):
+        return Ciudad.objects.sort_by('nombre')
 
     class Meta:
         verbose_name_plural = 'Ciudades'

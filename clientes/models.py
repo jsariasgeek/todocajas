@@ -8,4 +8,7 @@ class Cliente(models.Model):
     direccion = models.CharField(max_length=200)
     ciudad = models.ForeignKey('ubicaciones.Ciudad', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.nombre
+
 
